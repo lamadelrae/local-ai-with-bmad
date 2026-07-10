@@ -2,7 +2,7 @@
 
 A minimal chat UI (Next.js + Vercel AI SDK + AI Elements + shadcn/ui) talking to a locally-hosted **Gemma 4 E2B** model, served entirely on your own machine via a Dockerized `llama.cpp` server. No cloud API keys, no Ollama, no persistence — everything runs on `localhost`.
 
-See [docs/brief.md](docs/brief.md), [docs/prd.md](docs/prd.md), and [docs/architecture.md](docs/architecture.md) for the full BMAD-produced product brief, PRD, and architecture spine behind this build, and [docs/workflow.md](docs/workflow.md) for a full retrospective on how it was actually built — every step, snag, and divergence from the original BMAD plan.
+See the [Product Brief](_bmad-output/planning-artifacts/briefs/brief-local-ai-with-bmad-2026-07-09/brief.md), [PRD](_bmad-output/planning-artifacts/prds/prd-local-ai-with-bmad-2026-07-09/prd.md), and [Architecture Spine](_bmad-output/planning-artifacts/architecture/architecture-local-ai-with-bmad-2026-07-09/ARCHITECTURE-SPINE.md) for the full BMAD-produced planning behind this build (filed under `_bmad-output/planning-artifacts/`, where BMAD's own tooling expects to find them), and [docs/workflow.md](docs/workflow.md) for a full retrospective on how it was actually built — every step, snag, and divergence from the original BMAD plan.
 
 ## Prerequisites
 

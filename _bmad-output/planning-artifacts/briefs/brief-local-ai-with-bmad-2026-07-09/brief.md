@@ -31,13 +31,13 @@ A single user (the builder) who wants (a) a local chat reference app they unders
 
 - `docker compose up` serves Gemma 4 E2B at `localhost:8080/v1` and responds to a raw curl chat-completions request.
 - The Next.js chat page sends a message and streams a real model response end-to-end in the browser.
-- No Ollama, no auth, no database, anywhere in the stack.
+- No Ollama, no auth, no cloud database or hosted persistence — conversation history lives in a single local SQLite file, nothing leaves the machine.
 
 ## Scope
 
-**In:** chat UI (message list, input, send), `/api/chat` route using AI SDK against the local endpoint, Docker Compose for the llama.cpp server, README covering the two-command startup.
+**In:** chat UI (message list, input, send), `/api/chat` route using AI SDK against the local endpoint, Docker Compose for the llama.cpp server, README covering the two-command startup, multimodal file attachments (JPEG/PNG/PDF), local voice-to-text, and persistent SQLite conversation history with session management.
 
-**Out:** auth, persistence/history beyond in-memory session state, multi-user, cloud fallback, Ollama, model fine-tuning, conversation export.
+**Out:** auth, multi-user, cloud fallback, Ollama, model fine-tuning, conversation export.
 
 ## Vision
 

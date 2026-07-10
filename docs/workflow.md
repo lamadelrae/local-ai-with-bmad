@@ -128,11 +128,19 @@ Running `bmad-prd` or `bmad-architecture` for real, in a fresh session, would li
 
 ## Step 2 — The three planning documents produced
 
-- [`docs/brief.md`](brief.md) — Product Brief, following `bmad-product-brief`'s template.
-- [`docs/prd.md`](prd.md) — PRD with numbered requirements `FR-1`–`FR-5`, non-functional requirements, `[ASSUMPTION]` tags where something was inferred.
-- [`docs/architecture.md`](architecture.md) — Architecture Spine with five `AD-n` decisions, a diagram, a "Seed" section (facts true at cold start), and a "Deferred" section (consciously left undecided: GPU tuning, persistence, model swapping).
+- [Product Brief](../_bmad-output/planning-artifacts/briefs/brief-local-ai-with-bmad-2026-07-09/brief.md) — following `bmad-product-brief`'s template.
+- [PRD](../_bmad-output/planning-artifacts/prds/prd-local-ai-with-bmad-2026-07-09/prd.md) — numbered requirements `FR-1`–`FR-5`, non-functional requirements, `[ASSUMPTION]` tags where something was inferred.
+- [Architecture Spine](../_bmad-output/planning-artifacts/architecture/architecture-local-ai-with-bmad-2026-07-09/ARCHITECTURE-SPINE.md) — five `AD-n` decisions, a diagram, a "Seed" section (facts true at cold start), and a "Deferred" section (consciously left undecided: GPU tuning, persistence, model swapping).
 
 The brief's non-goals (no auth, no database, no multi-user, no cloud fallback, no Ollama) became `AD-3` and `AD-4` — numbered decisions a future change would have to consciously break, not just drift past.
+
+**Where these files actually live matters.** They were originally dropped straight into `docs/` for convenience, which turned out to be the wrong home: every BMAD config defines a dedicated `{planning_artifacts}` location (`_bmad-output/planning-artifacts/`), and downstream skills (`bmad-create-epics-and-stories`, `bmad-correct-course`, `bmad-dev-auto`, and others) **automatically search that exact location** for files matching `*brief*.md`, `*prd*.md`, `*architecture*.md` — they don't look in `docs/`. `docs/` is actually reserved in this project's config for a *different* purpose (`project_knowledge`, the output of BMAD's `bmad-document-project` skill for describing an existing codebase). So the three docs were moved to match each skill's own configured output path exactly:
+
+- Brief → `_bmad-output/planning-artifacts/briefs/brief-local-ai-with-bmad-2026-07-09/brief.md`
+- PRD → `_bmad-output/planning-artifacts/prds/prd-local-ai-with-bmad-2026-07-09/prd.md`
+- Architecture → `_bmad-output/planning-artifacts/architecture/architecture-local-ai-with-bmad-2026-07-09/ARCHITECTURE-SPINE.md` (note the filename — the architecture skill always writes `ARCHITECTURE-SPINE.md`, not `architecture.md`)
+
+One thing intentionally **not** faked in the move: a real run folder also holds a `.memlog.md` — the live decision log described in Part 1. Since these three documents were hand-authored rather than produced by an actual `bmad-prd`/`bmad-architecture`/`bmad-product-brief` conversation, there's no real memlog to move — fabricating one would misrepresent a conversation that never happened. If this project's planning ever gets redone through the live skills, real run folders (memlog included) will get created fresh, most likely dated later than these hand-authored ones.
 
 ## Step 3 — Getting Gemma running locally
 
